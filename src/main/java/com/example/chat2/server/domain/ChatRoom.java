@@ -20,8 +20,20 @@ public class ChatRoom {
         usersInRoom.add(user);};
 
     public void removeUser(String user){
-        usersInRoom.remove(user);
-    };
+        if(isUserInRoom(user)) {
+            usersInRoom.remove(user);
+        }
+    }
+
+    private boolean isUserInRoom(String user) {
+    if(usersInRoom.contains(user)){
+        return true;
+    }else{
+        return false;
+    }
+    }
+
+
 
     public String getRoomName(){
         return this.roomName;

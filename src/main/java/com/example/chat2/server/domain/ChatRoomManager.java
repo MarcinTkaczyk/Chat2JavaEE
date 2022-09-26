@@ -64,3 +64,4 @@ public class ChatRoomManager {
          return chatRooms.contains(getRoomByName(name));
      }
 }
+

@@ -87,9 +87,11 @@ public class ChatClient {
             @Override
             public void run() {
                 log.info("Closing connection with server");
-                clientOut.write(new CommandMessage.CommandMessageBuilder()
+                AbstractChatMessage exitMessage = new CommandMessage.CommandMessageBuilder()
                         .command(Command.CLOSESESSION)
-                        .build());
+                        .build();
+                exitMessage.setSource(user);
+                clientOut.write(exitMessage);
             }
         });
         ClientIn clientIn = new ClientIncomingMessageService(clientOutputFolder, user);
