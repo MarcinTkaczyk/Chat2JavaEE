@@ -1,0 +1,25 @@
+1. Dodać użytkownika z uprawnieniami Management
+
+./add-user.sh
+
+2. Podnieść server w trybie full
+
+./standalone.sh -c standalone-full.xml
+
+3. Podpiąć się do CLI
+
+./jboss-cli.sh
+connect
+
+4. Utworzyć kolejkę i temat jms
+
+/subsystem=messaging-activemq/server=default/jms-queue=Bus:add(entries=[java:jboss/exported/jms/queue/Bus])
+/subsystem=messaging-activemq/server=default/jms-topic=Messages:add(entries=[java:jboss/exported/jms/topic/Messages])
+
+5. Wyłączyć security na poziomie jms
+
+/subsystem=messaging-activemq/server=default:write-attribute(name=security-enabled,value=false)
+
+6. Przeładować konfigurację
+
+reload
