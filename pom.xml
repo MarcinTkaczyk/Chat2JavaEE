@@ -47,12 +47,37 @@
         <!--            <artifactId>resteasy-jackson2-provider</artifactId>-->
         <!--            <version>4.6.0.Final</version>-->
         <!--        </dependency>-->
-        <!--        <dependency>-->
-        <!--            <groupId>org.jboss.resteasy</groupId>-->
-        <!--            <artifactId>resteasy-client</artifactId>-->
-        <!--            <version>6.1.0.Final-->
-        <!--            </version>-->
-        <!--        </dependency>-->
+                <dependency>
+                    <groupId>org.jboss.resteasy</groupId>
+                    <artifactId>resteasy-client</artifactId>
+                    <version>6.1.0.Final
+                    </version>
+<!--                    <exclusions>-->
+<!--                        <exclusion>-->
+<!--                            <groupId>org.jboss.resteasy</groupId>-->
+<!--                            <artifactId>resteasy-core-spi</artifactId>-->
+<!--                        </exclusion>-->
+<!--                        <exclusion>-->
+<!--                            <groupId>org.jboss.resteasy</groupId>-->
+<!--                            <artifactId>resteasy-core</artifactId>-->
+<!--                        </exclusion></exclusions>-->
+                </dependency>
+        <dependency>
+            <groupId>org.jboss.resteasy</groupId>
+            <artifactId>resteasy-multipart-provider</artifactId>
+            <version>4.7.7.Final</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.httpcomponents.client5</groupId>
+            <artifactId>httpclient5-fluent</artifactId>
+            <version>5.1.3</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-fileupload</groupId>
+            <artifactId>commons-fileupload</artifactId>
+            <version>1.4</version>
+        </dependency>
+
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>

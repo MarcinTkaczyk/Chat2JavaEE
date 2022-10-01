@@ -43,8 +43,7 @@ public class JmsServerListener implements Runnable {
                 while(true){
 
                 }
-                //log.info("post jms consumer");
-
-        }
+        }catch(Throwable t){
+            t.printStackTrace();}
     }
 }

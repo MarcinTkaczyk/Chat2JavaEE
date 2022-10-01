@@ -22,23 +22,19 @@ import java.util.function.Consumer;
 @Log
 public class ChatClient {
 
-    private static final int DEFAULT_PORT = 8888;
-
-
     private final Runnable readFromConsole;
     private final String name;
-    private ObjectOutputStream objectOutputStream;
-    private File clientOutputFolder;
-    private Properties properties;
     ClientOut clientOut;
     FileClient fileClient;
+    ClientIn clientIn;
 
-    Runnable onClose;
-    public ChatClient(String name, ClientOut clientOut, FileClient fileClient) throws IOException {
+    public ChatClient(String name, ClientIn clientIn, ClientOut clientOut, FileClient fileClient){
 
         this.name = name;
         this.clientOut = clientOut;
         this.fileClient = fileClient;
+        this.clientIn = clientIn;
+
 
         readFromConsole = new Runnable() {
             @Override
@@ -74,7 +70,7 @@ public class ChatClient {
         ClientService.showMenu();
     }
 
-    public static void main(String[] args) throws IOException, NamingException {
+    public static void main(String[] args) throws NamingException {
         String user = args[0];
 
         Properties properties = PropertiesLoader.loadProperties();
@@ -94,12 +90,13 @@ public class ChatClient {
                 clientOut.write(exitMessage);
             }
         });
-        ClientIn clientIn = new ClientIncomingMessageService(clientOutputFolder, user);
+        FileClient fileClient = new RestClient();
+        ClientIn clientIn = new ClientIncomingMessageService(clientOutputFolder, user, fileClient);
         JmsListener jmsListener = new JmsListener(clientIn);
         var jmsListenerThread = new Thread(jmsListener);
         jmsListenerThread.start();
-        FileClient fileClient = new RestClient();
-        new ChatClient(args[0], clientOut, fileClient).start();
+
+        new ChatClient(args[0], clientIn, clientOut, fileClient).start();
 
     }
 

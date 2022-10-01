@@ -26,14 +26,12 @@ public class ChatRoom {
     }
 
     private boolean isUserInRoom(String user) {
-    if(usersInRoom.contains(user)){
-        return true;
-    }else{
-        return false;
+        if(usersInRoom.contains(user)){
+            return true;
+        }else{
+            return false;
+        }
     }
-    }
-
-
 
     public String getRoomName(){
         return this.roomName;

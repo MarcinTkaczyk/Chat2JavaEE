@@ -1,6 +1,5 @@
 package com.example.chat2.server.domain;
 
-
 import com.example.chat2.server.ports.model.*;
 import lombok.RequiredArgsConstructor;
 

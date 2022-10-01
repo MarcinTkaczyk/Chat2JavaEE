@@ -1,10 +1,7 @@
 package com.example.chat2.server.domain;
 
-
-
 import com.example.chat2.server.ports.model.AbstractChatMessage;
 import lombok.RequiredArgsConstructor;
-
 import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
@@ -44,8 +41,9 @@ class SynchronizedOnMethodServiceWorkers implements ServerWorkers {
     }
 
     @Override
-    public synchronized void broadcastFile(AbstractChatMessage message, ChatRoom room, Worker source) {
-        serverWorkers.broadcastFile(message, room, source);
+    public synchronized void broadcastFile(AbstractChatMessage message, String source) {
+
+        serverWorkers.broadcastFile(message, source);
     }
 
 

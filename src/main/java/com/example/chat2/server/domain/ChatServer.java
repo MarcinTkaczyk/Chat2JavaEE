@@ -29,10 +29,7 @@ public class ChatServer {
 
        var listener = new Thread( new JmsServerListener(new IncomingMessageService(this)));
        listener.start();
-//            while (true) {
-//
-//            }
-        }
+    }
 
     public Worker getWorker(String name){
         return serverWorkers.getWorker(name);

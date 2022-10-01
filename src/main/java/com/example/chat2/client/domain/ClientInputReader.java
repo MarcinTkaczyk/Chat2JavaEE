@@ -13,7 +13,6 @@ public class ClientInputReader {
 
     private final Consumer<String> textConsumer;
     private BufferedReader reader;
-    private Runnable onClose;
     private final String QUITPHRASE = "q";
 
     public ClientInputReader(InputStream inputStream, Consumer<String> textConsumer) {
@@ -30,10 +29,7 @@ public class ClientInputReader {
         } catch (IOException exception) {
             log.severe("Read message failed: " + exception.getMessage());
         } finally {
-            log.info("closing loop");
-//            if (onClose != null) {
-//                onClose.run();
-//            }
+            log.info("closing client");
         }
     }
 

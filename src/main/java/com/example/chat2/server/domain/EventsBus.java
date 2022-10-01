@@ -8,15 +8,15 @@ import java.util.function.Consumer;
 import static java.util.Collections.synchronizedSet;
 
 @ApplicationScoped
-class EventsBus {
+public class EventsBus {
 
     private final Set<Consumer<ServerEvent>> consumers = synchronizedSet(new HashSet<>());
 
-    void addConsumer(Consumer<ServerEvent> consumer) {
+    public void addConsumer(Consumer<ServerEvent> consumer) {
         consumers.add(consumer);
     }
 
-    void publish(ServerEvent event) {
+    public void publish(ServerEvent event) {
         consumers.forEach(consumer -> consumer.accept(event));
     }
 

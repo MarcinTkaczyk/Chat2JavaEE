@@ -1,9 +1,7 @@
 package com.example.chat2.server.domain;
 
-
 import com.example.chat2.server.ports.model.AbstractChatMessage;
 import lombok.RequiredArgsConstructor;
-
 import javax.jms.JMSException;
 import javax.jms.Message;
 import javax.jms.MessageListener;

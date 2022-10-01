@@ -1,7 +1,5 @@
 package com.example.chat2.server.adapters.jms;
 
-
-
 import com.example.chat2.server.commons.ProxyFactory;
 import com.example.chat2.server.ports.model.AbstractChatMessage;
 import com.example.chat2.server.ports.out.ServerOut;

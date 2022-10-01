@@ -1,7 +1,6 @@
 package com.example.chat2.server.domain;
 
 import lombok.extern.java.Log;
-
 import java.util.function.Consumer;
 
 @Log

@@ -1,6 +1,7 @@
 package com.example.chat2.client.domain;
 
 
+import com.example.chat2.client.adapters.RestClient;
 import com.example.chat2.server.ports.model.*;
 import lombok.RequiredArgsConstructor;
 
@@ -15,8 +16,6 @@ public class ClientConsoleCommandDecoder {
     private final String ROOMCHANGEPHRASE = "ROOM>";
     private final String HISTORYREQUESTPHRASE = "HISTORY>";
     private final String FILESENDREQUEST = "FILE>";
-//    private final String EXITREQUEST = "exit";
-
 
     private final String user;
 
@@ -62,14 +61,7 @@ public class ClientConsoleCommandDecoder {
                     .name(file.getName())
                     .build();
         }
-//        if(text.contains(EXITREQUEST))
-//        {
-//
-//            return new CommandMessage.CommandMessageBuilder()
-//                    .command(Command.CLOSESESSION)
-//
-//                    .build();
-//        }
+
         else
         {
             return new TextMessage.TextMessageBuilder()

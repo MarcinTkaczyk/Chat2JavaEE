@@ -29,7 +29,6 @@ public class ChatStarter {
 
     public ChatStarter(){}
 
-
     @Inject
     public ChatStarter(ChatRepository chatRepository, ChatRoomManager chatRoomManager, EventsBus eventsBus){
         this.chatRepository = chatRepository;

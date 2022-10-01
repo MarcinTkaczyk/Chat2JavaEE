@@ -1,13 +1,10 @@
 package com.example.chat2.server.domain;
 
-
 import lombok.Getter;
 import lombok.Setter;
 
-
 import java.io.Serializable;
 import java.util.*;
-
 
 @Getter
 @Setter

@@ -3,7 +3,6 @@ package com.example.chat2.server.domain;
 import com.example.chat2.server.ports.model.*;
 import com.example.chat2.server.ports.out.ServerOut;
 import lombok.Getter;
-
 import javax.naming.NamingException;
 import java.util.Set;
 
@@ -45,7 +44,6 @@ class Worker{
     }
 
     public void close(){
-
         close = true;
         onInputClose();
     }
@@ -103,6 +101,11 @@ class Worker{
         } catch (NamingException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    void processIncomingFileMessage(AbstractChatMessage message){
+        var room = currentRoom;
+
     }
 
     ChatRoom getWorkerRoom(){

@@ -1,7 +1,5 @@
 package com.example.chat2.server.domain;
 
-
-
 import java.util.List;
 
 public interface HistoryLogger {

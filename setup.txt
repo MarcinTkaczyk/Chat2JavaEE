@@ -1,3 +1,4 @@
+I. Konfiguracja
 1. Dodać użytkownika z uprawnieniami Management
 
 ./add-user.sh
@@ -16,10 +17,23 @@ connect
 /subsystem=messaging-activemq/server=default/jms-queue=Bus:add(entries=[java:jboss/exported/jms/queue/Bus])
 /subsystem=messaging-activemq/server=default/jms-topic=Messages:add(entries=[java:jboss/exported/jms/topic/Messages])
 
-5. Wyłączyć security na poziomie jms
+5. Zainstalować postgresql
+
+Pobrać sterownik i dodać do wildfly:
+module add --name=org.postgres --resources=postgresql-42.2.5.jar --dependencies=javax.api,javax.transaction.api
+/subsystem=datasources/jdbc-driver=postgres:add(driver-name="postgres",driver-module-name="org.postgres",driver-class-name=org.postgresql.Driver)
+data-source add --jndi-name=java:/PostgresDS --name=PostgrePool --connection-url=jdbc:postgresql://localhost/postgresdb --driver-name=postgres --user-name=admin --password=admin
+
+6. Wyłączyć security na poziomie jms
 
 /subsystem=messaging-activemq/server=default:write-attribute(name=security-enabled,value=false)
 
-6. Przeładować konfigurację
+7. Przeładować konfigurację
 
 reload
+
+II. Uruchamianie
+
+1. Podnieść serwer na wildfly
+2. Uruchomić klienta com/example/chat2/client/domain/ChatClient.java
+jako argument podać unikalną nazwę użytkownika

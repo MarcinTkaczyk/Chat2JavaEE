@@ -1,14 +1,9 @@
 package com.example.chat2.server.domain;
 
-
-
-
 import com.example.chat2.server.ports.model.AbstractChatMessage;
 import com.example.chat2.server.ports.out.ServerOut;
-
 import java.util.HashMap;
 import java.util.Map;
-
 
 class HashSetServerWorkers implements ServerWorkers {
 
@@ -25,6 +20,7 @@ class HashSetServerWorkers implements ServerWorkers {
 
     @Override
     public void add(String name, Worker worker) {
+
         workers.put(name, worker);
     }
 
@@ -44,8 +40,9 @@ class HashSetServerWorkers implements ServerWorkers {
     }
 
     @Override
-    public void broadcastFile(AbstractChatMessage message, ChatRoom room, Worker source) {
-
+    public void broadcastFile(AbstractChatMessage message, String source) {
+        var room = getWorker(source).getWorkerRoom();
+        messageBroadcaster.broadcast(message, room);
     }
 
 }
